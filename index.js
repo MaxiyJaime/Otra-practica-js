@@ -77,3 +77,143 @@ let buscador = (arrayAlu, nombre) => { //usamos el array del punto anterior
     }
 }
 
+buscador(arrayAlum, "Tomi")
+
+let separador = () => {
+    return console.log("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°")
+}
+separador()
+
+//------ Parte 2: Callbacks -------
+// 1) Definir una función que se llame Calculadora, que reciba un array de números, y
+// una callback
+//   a) Pasarle por argumento una función arrow que realice la suma de los elementos
+//   del array.
+let arrayNumerico = [4, 5, 10, 3, 15]
+
+let Calculadora = (arrayNum, callback) => {
+    return callback(arrayNum)
+}
+
+let suma = (arraySum) => {
+    let greg = arraySum[0]
+    for (let i = 1; i<arraySum.length; i++) {
+        greg = greg + arraySum[i]
+    }
+    console.log("La suma del arreglo es:", greg)
+}
+
+Calculadora(arrayNumerico, suma)
+
+//   b) Pasarle por argumento una función arrow que realice la resta de los elementos
+//   del array
+
+let resta = (arrayRes) => {
+    let greg = arrayRes[0]
+    for (let i = 1; i<arrayRes.length; i++) {
+        greg = greg - arrayRes[i]
+    }
+    console.log("La resta del arreglo es:", greg)
+}
+
+Calculadora(arrayNumerico, resta)
+
+//   c) Pasarle por argumento una función arrow que realice la multiplicación de los
+//   elementos.
+
+let multiplica = (arrayMul) => {
+    let greg = arrayMul[0]
+    for (let i = 1; i<arrayMul.length; i++) {
+        greg = greg * arrayMul[i]
+    }
+    console.log("La multiplicacion del arreglo es:", greg)
+}
+
+Calculadora(arrayNumerico, multiplica)
+
+// 2) Definir una función llamada agregarSiEstaEntreCeroYDiez, que reciba un número,
+// y un array, la función debe validar si el número es mayor o igual a cero y menor o
+// igual a 10, en caso favorable, debe agregarlo en la primera posición del array, caso
+// contrario debe arrojar un error informando que el número es mayor o menor a lo
+// establecido. Debe retornar el array con el resultado.
+
+let agregarSiEstaEntreCeroYDiez = (number, arreglao) => {
+    if((number >= 0)&&(number <= 10)) {
+        arreglao.unshift(number)
+    } else {
+        console.log("El numero ingresado no está en el rango especificado")
+    }
+    return console.log(arreglao)
+}
+
+agregarSiEstaEntreCeroYDiez(1, arrayNumerico) //reciclada historica
+
+// 3) Definir una función similar a la del punto 2, pero que en vez de un número reciba
+// un array con números y valide si cada uno de los elementos cumple con la
+// condición de estar entre cero y diez, debe retornar un array con los números que
+// cumplan la función
+
+arrayNumerico.push(14, 30)
+
+let agregarSiEntreCeroYDiezRaro = (arregaloNum) => {
+    let arregloBajo = arregaloNum.filter((element) => 
+        element >= 0 && element <= 10 //acordarse que acá no se ponen "{}", asi te lo acepta
+    )
+    return console.log("El nuevo arreglo es:", arregloBajo)
+}
+
+agregarSiEntreCeroYDiezRaro(arrayNumerico)
+
+// 4) Momento de creatividad! – Definir una función que reciba tres parámetros, algo, y
+// dos callbacks, que internamente las ejecute y realice algún procedimiento
+
+let detectorDeExitosos = (nombre, edad, estudiante, gamer, callback1, callback2) => {
+    console.log("Veamos el perfil de éste estudiante:")
+    callback1(nombre, edad)
+    callback2(estudiante, gamer)
+}
+
+let verificador = (nombre, edad) => {
+    if (edad >= 20) {
+        return console.log("El usuario llamado", nombre, "tiene los conocimientos necesarios para fundar una empresa")
+    } else {
+        return console.log("El usuario", nombre, "todavia le falta estudiar cosas para fundar su empresa")
+    }
+}
+
+let pasatiempos = (estudiante, gamer) => {
+    if (gamer == true) {
+        console.log("El estudiante (", estudiante, ") pasa mucho tiempo jugando, y no estudia na (", gamer, ")")
+    } else {
+        console.log("El estudiante (", estudiante, ") no juega nada y, aun asi, tiene fiaca de estudiar (", gamer, ")")
+    }
+}
+
+detectorDeExitosos("Maxi", 21, true, true, verificador, pasatiempos)
+
+// 5) Realizar una función que se llame validarIngreso, que reciba una edad, y una
+// callback. Esta función debe validar por medio de un operador ternario si puede
+// intregar o no (la condición es que sea mayor a 18 años). El resultado del operador
+// ternario de debe pasar como argumento a la ejecución de la callback. (Podes
+// elegir que hacer con la función callback que le vas a pasar por agumento a la
+// función validarIngreso)
+
+const validarIngreso = (edad, llamarAtras) => {
+    //el operador ternario es el if resumido
+    let pase
+    edad >= 18 ? (pase = true) : (pase = false)
+
+    llamarAtras(pase)
+}
+let generadorDeTokens= (acceso) => {
+    if (acceso == true) {
+        return console.log("Edad verificada. Entre al sistema")
+    } else {
+        return console.log("Edad verificada. Acceso denegado")
+    }
+    
+}
+
+validarIngreso(30, generadorDeTokens)
+
+//falta ver como subir esto a github
