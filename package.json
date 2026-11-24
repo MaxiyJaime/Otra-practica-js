@@ -2,6 +2,14 @@
   "name": "funciones-call-array",
   "version": "1.0.0",
   "description": "Tp numero 1 de back",
+  "homepage": "https://github.com/MaxiyJaime/Otra-practica-js#readme",
+  "bugs": {
+    "url": "https://github.com/MaxiyJaime/Otra-practica-js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxiyJaime/Otra-practica-js.git"
+  },
   "license": "UNLICENSED",
   "author": "yo",
   "type": "commonjs",
